@@ -79,7 +79,7 @@ return [
 ];
 ```
 
-## Example Usage
+## Usage Example
 ```php
 
     // base_path() . "/routes/web.php"
@@ -96,7 +96,10 @@ return [
     
         $form = '<form method="post" action="">';
         $form .= '<input type="hidden" name="_token" value="' . csrf_token() . '">';
-        $form .= '<p>' . captcha_img() . '</p>';
+        $form .= '<p>';
+        $form .= captcha_img('default', ['id' => 'captcha-img']);
+        $form .= '<a href="#" onclick="document.getElementById(\'captcha-img\').src = \'/captcha/default?\' + Date.now()">Refresh</a>';
+        $form .= '</p>';
         $form .= '<p><input type="text" name="captcha"></p>';
         $form .= '<p><button type="submit" name="check">Check captcha</button></p>';
         $form .= '</form>';
