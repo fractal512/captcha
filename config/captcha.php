@@ -3,6 +3,7 @@
 return [
     'characters' => 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789',
     'expire' => 300,
+    'attempts' => 10,
     'default' => [],
     'numbers' => [
         'characters' => '0123456789'

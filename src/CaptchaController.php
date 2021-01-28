@@ -12,6 +12,17 @@ use Illuminate\Routing\Controller;
 class CaptchaController extends Controller
 {
     /**
+     * Instantiate a new controller instance.
+     *
+     * @param Captcha $captcha
+     */
+    public function __construct(Captcha $captcha)
+    {
+        $attempts = $captcha->getAttempts();
+        $this->middleware("throttle:$attempts,1")->only('getCaptcha');
+    }
+
+    /**
      * get CAPTCHA
      *
      * @param Captcha $captcha

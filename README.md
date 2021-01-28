@@ -71,13 +71,26 @@ Publish package `config.php` file to apply your own settings.
 return [
     'characters' => 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789',
     'expire' => 300,
+    'attempts' => 10,
     'default' => [],
     'numbers' => [
         'characters' => '0123456789'
     ],
-    // ...
+    'letters' => [
+        'characters' => 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    ],
+    'uppercase' => [
+        'characters' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    ],
+    'lowercase' => [
+        'characters' => 'abcdefghijklmnopqrstuvwxyz'
+    ]
 ];
 ```
+Configuration options:
+* `characters` - set of characters used be captcha (available presets: `default`, `numbers`, `letters`, `uppercase`, `lowercase`);
+* `expire` - captcha expiration time in seconds;
+* `attempts` - number of attempts per minute to refresh the captcha image.
 
 ## Usage Example
 ```php

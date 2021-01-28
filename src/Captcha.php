@@ -61,6 +61,11 @@ class Captcha
     protected $expire = 300;
 
     /**
+     * @var int
+     */
+    protected $attempts = 10;
+
+    /**
      * Constructor
      *
      * @param Repository $config
@@ -81,6 +86,10 @@ class Captcha
         $this->expire = config(
             'captcha.expire',
             300
+        );
+        $this->attempts = config(
+            'captcha.attempts',
+            10
         );
         $this->fontsDirectory = config(
             'captcha.fontsDirectory',
@@ -107,6 +116,16 @@ class Captcha
                 $this->{$key} = $val;
             }
         }
+    }
+
+    /**
+     * Attempts property getter
+     *
+     * @return int
+     */
+    public function getAttempts()
+    {
+        return $this->attempts;
     }
 
     /**
