@@ -250,6 +250,7 @@ class Captcha
                     $chunks = explode('-', $entry);
                     if($chunks[0] === $value){
                         unlink($this->captchaDirectory . DIRECTORY_SEPARATOR . $entry);
+                        closedir($handle);
                         return true;
                     }
                 }

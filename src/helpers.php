@@ -29,9 +29,9 @@ if (!function_exists('captcha_img')) {
      * @param string $config
      * @return string
      */
-    function captcha_img($config = 'default')
+    function captcha_img($config = 'default', $attrs = [])
     {
-        return app('captcha')->img($config);
+        return app('captcha')->img($config, $attrs);
     }
 }
 

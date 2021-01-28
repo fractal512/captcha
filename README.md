@@ -1,12 +1,7 @@
 # Simple Captcha for Laravel 5+
-
 A very simple stateless captcha for [Laravel 5+](http://www.laravel.com/). Basically it's a simple Laravel package wrapper for my old captcha script written a long time ago.
 
-## Preview
-
-  
 ## Installation
-
 The Captcha can be installed via [Composer](http://getcomposer.org) by requiring the
 `fractal512/captcha` package and setting the `minimum-stability` to `dev` (required for Laravel 5) in your
 project's `composer.json`.
@@ -32,11 +27,7 @@ Update your packages with ```composer update``` or install with ```composer inst
 
 In Windows, you'll need to include the GD2 DLL `php_gd2.dll` in php.ini. And you also need include `php_fileinfo.dll` and `php_mbstring.dll` to fit the requirements of `fractal512/captcha`'s dependencies.
 
-
-
-
-## Usage
-
+## Registration in Laravel
 Register the Captcha Service Provider in the `providers` key in `config/app.php`.
 
 ```php
@@ -70,7 +61,6 @@ for Laravel 5.1+
 ```
 
 ## Configuration
-
 Publish package `config.php` file to apply your own settings.
 
 ```$ php artisan vendor:publish```
@@ -90,10 +80,9 @@ return [
 ```
 
 ## Example Usage
-### Session Mode:
 ```php
 
-    // base_path . "/routes/web.php"
+    // base_path() . "/routes/web.php"
     Route::any('captcha-example', function() {
         if (request()->getMethod() == 'POST') {
             $rules = ['captcha' => 'required|captcha'];
@@ -130,7 +119,7 @@ Captcha::create();
 captcha_src();
 ```
 or using facade
-```
+```php
 Captcha::src('default');
 ```
 
