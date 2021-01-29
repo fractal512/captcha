@@ -8,7 +8,7 @@ namespace Fractal512\Captcha;
  * @copyright Copyright (c) 2021 Fractal512
  * @version 1.x
  * @author fractal512
- * @contact
+ * @contact fractal512.web.dev@gmail.com
  * @web https://github.com/fractal512/captcha
  * @date 2021-01-26
  * @license http://www.opensource.org/licenses/mit-license.php The MIT License
@@ -39,6 +39,11 @@ class Captcha
      * @var string
      */
     protected $fontsDirectory;
+
+    /**
+     * @var string
+     */
+    protected $fontFile;
 
     /**
      * @var Str
@@ -94,6 +99,10 @@ class Captcha
         $this->fontsDirectory = config(
             'captcha.fontsDirectory',
             dirname(__DIR__) . DIRECTORY_SEPARATOR . 'assets' . DIRECTORY_SEPARATOR . 'fonts'
+        );
+        $this->fontFile = config(
+            'captcha.fontFile',
+            'Pacifico-Regular.ttf'
         );
         $captchaDirectory = config(
             'captcha.captchaDirectory',
@@ -181,7 +190,7 @@ class Captcha
         $grey = imagecolorallocate($im, 128, 128, 128);
         $txtColor = imagecolorallocate($im, rand(0, 255), rand(0, 255), rand(0, 255));
         imagefilledrectangle($im, 0, 0, 109, 39, $bgColor);
-        $font = $this->fontsDirectory . DIRECTORY_SEPARATOR . 'Pacifico-Regular.ttf';
+        $font = $this->fontsDirectory . DIRECTORY_SEPARATOR . $this->fontFile;
         $angle = rand((-8), 8);
         imagettftext($im, 18, $angle, 11, 31, $grey, $font, $this->captcha);
         imagettftext($im, 18, $angle, 10, 30, $txtColor, $font, $this->captcha);
@@ -261,7 +270,7 @@ class Captcha
      */
     public function check($value)
     {
-        $time = time();
+        $valid = false;
 
         if ($handle = opendir($this->captchaDirectory)) {
             while (false !== ($entry = readdir($handle))) {
@@ -269,14 +278,14 @@ class Captcha
                     $chunks = explode('-', $entry);
                     if($chunks[0] === $value){
                         unlink($this->captchaDirectory . DIRECTORY_SEPARATOR . $entry);
-                        closedir($handle);
-                        return true;
+                        $valid = true;
+                        break;
                     }
                 }
             }
             closedir($handle);
         }
 
-        return false;
+        return $valid;
     }
 }

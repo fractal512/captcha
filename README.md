@@ -88,9 +88,14 @@ return [
 ];
 ```
 Configuration options:
-* `characters` - set of characters used be captcha (available presets: `default`, `numbers`, `letters`, `uppercase`, `lowercase`);
+* `characters` - set of characters used by captcha (available presets: `default`, `numbers`, `letters`, `uppercase`, `lowercase`);
 * `expire` - captcha expiration time in seconds;
 * `attempts` - number of attempts per minute to refresh the captcha image.
+
+Additional options may be included:
+* `fontsDirectory` - the fully qualified path without trailing slash to custom fonts directory;
+* `fontFile` - custom TTF font file name located in `fontsDirectory`;
+* `captchaDirectory` - the fully qualified path without trailing slash to custom directory storing captcha files.
 
 ## Usage Example
 ```php
@@ -158,4 +163,4 @@ etc.
 
 
 ## Links
-* Wrapper used from [Captcha for Laravel 5/6/7](https://github.com/mewebstudio/captcha)
+* Wrapper scaffold was taken from [Captcha for Laravel 5/6/7](https://github.com/mewebstudio/captcha)
