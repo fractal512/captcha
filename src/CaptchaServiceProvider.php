@@ -8,7 +8,7 @@ use Illuminate\Validation\Factory;
 
 /**
  * Class CaptchaServiceProvider
- * @package Mews\Captcha
+ * @package Fractal512\Captcha
  */
 class CaptchaServiceProvider extends ServiceProvider
 {

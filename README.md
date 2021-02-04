@@ -15,20 +15,17 @@ project's `composer.json`.
     "minimum-stability": "dev"
 }
 ```
+Then update your packages with `composer update` or install with `composer install`.
 
-or
-
-Require this package with composer:
+Or require this package with composer:
 ```
 composer require fractal512/captcha
 ```
 
-Update your packages with ```composer update``` or install with ```composer install```.
-
 In Windows, you'll need to include the GD2 DLL `php_gd2.dll` in php.ini. And you also need include `php_fileinfo.dll` and `php_mbstring.dll` to fit the requirements of `fractal512/captcha`'s dependencies.
 
 ## Registration in Laravel
-(No need in Laravel 8+)
+No need in versions with auto discovery (Laravel 5.5+).
 Register the Captcha Service Provider in the `providers` key in `config/app.php`.
 
 ```php
@@ -74,7 +71,7 @@ or run (Laravel 8+)
 $ php artisan vendor:publish
 ```
 
-then enter the number of the `fractal512\captcha` service provider.
+then enter the number of the `Fractal512\Captcha\CaptchaServiceProvider` service provider.
 
 Contents of the file `config/captcha.php`:
 ```php
