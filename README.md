@@ -10,7 +10,7 @@ project's `composer.json`.
 {
     "require": {
         "laravel/framework": "5.0.*",
-        "fractal512/captcha": "~1.0"
+        "fractal512/captcha": "^1.0"
     },
     "minimum-stability": "dev"
 }
